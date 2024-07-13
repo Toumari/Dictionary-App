@@ -17,8 +17,10 @@ const synonymList = document.querySelector(".synonyms-list");
 let audioClip = undefined;
 
 document.documentElement.dataset.theme = "light";
+searchBar.value = "Keyboard";
 audioIcon.style.display = "none";
 themeToggle.checked = false;
+fontSelector.value = "serif";
 
 themeToggle.addEventListener("click", () => {
   if (document.documentElement.dataset.theme === "light") {
@@ -30,8 +32,8 @@ themeToggle.addEventListener("click", () => {
   }
 });
 
-searchBar.addEventListener("keypress", (event) => {
-  if (event.key === "Enter" && searchBar.value) {
+const getWord = (wordLoad) => {
+  if ((event.key === "Enter" && searchBar.value) || wordLoad === "keyboard") {
     word.innerText = "";
     phonetics.innerText = "";
     error.innerText = "";
@@ -108,12 +110,10 @@ searchBar.addEventListener("keypress", (event) => {
     searchBar.style.outline = "2px solid red";
     error.innerText = "Whoops can't be empty...";
   }
-});
+};
 
 audioIcon.addEventListener("click", () => {
-  if (audioClip) {
-    audioClip.play();
-  }
+  audioClip.play();
 });
 
 fontSelector.addEventListener("change", (event) => {
@@ -124,4 +124,12 @@ fontSelector.addEventListener("change", (event) => {
   } else if (event.target.value === "monospace") {
     document.body.style.fontFamily = "Inconsolata, monospace";
   }
+});
+
+searchBar.addEventListener("keypress", getWord);
+
+document.addEventListener("DOMContentLoaded", () => {
+  searchBar.focus();
+  document.body.style.fontFamily = "Lora, serif";
+  getWord("keyboard");
 });
