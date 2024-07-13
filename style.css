@@ -283,3 +283,10 @@ li:marker {
 .source {
   display: none;
 }
+
+/* md */
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4rem;
+  }
+}
