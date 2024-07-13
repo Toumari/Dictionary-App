@@ -65,6 +65,13 @@ select {
   text-align: center;
 }
 
+.error {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
 .menu-items {
   display: flex;
   gap: 1rem;
@@ -146,8 +153,17 @@ input:checked + .slider:before {
   color: black;
 }
 
+.search-bar:focus {
+  outline: 2px solid var(--purple);
+}
+
 .audio-icon {
   cursor: pointer;
+}
+
+.audio-icon:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
 }
 
 .main-result {
@@ -213,9 +229,10 @@ li:marker {
 .synonyms {
   list-style: none;
   display: flex;
+  flex-direction: column;
   margin-top: 3rem;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .synonyms h3 {
@@ -227,6 +244,7 @@ li:marker {
 .synonyms ul {
   font-size: 1.2rem;
   display: flex;
+  flex-direction: column;
   list-style: none;
   color: #a445ed;
   font-weight: bold;

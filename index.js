@@ -12,6 +12,8 @@ const source = document.querySelector(".source");
 const fontSelector = document.querySelector("#font-type");
 const themeToggle = document.querySelector("#theme");
 const moonIcon = document.querySelector(".moon-icon");
+const error = document.querySelector(".error");
+const synonymList = document.querySelector(".synonyms-list");
 let audioClip = undefined;
 
 document.documentElement.dataset.theme = "light";
@@ -30,12 +32,18 @@ themeToggle.addEventListener("click", () => {
 
 searchBar.addEventListener("keypress", (event) => {
   if (event.key === "Enter" && searchBar.value) {
-    // Clear the previous search results
     word.innerText = "";
     phonetics.innerText = "";
+    error.innerText = "";
     nounList.innerHTML = "";
     verbList.innerHTML = "";
+    nounType.style.display = "none";
+    verbType.style.display = "none";
+    adjectiveType.style.display = "none";
+    adjectiveList.innerHTML = "";
+    synonymList.innerHTML = "";
     source.style.display = "block";
+    searchBar.style.outline = "2px solid purple";
     fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${searchBar.value}`)
       .then((response) => response.json())
       .then((data) => {
@@ -53,8 +61,6 @@ searchBar.addEventListener("keypress", (event) => {
           audioIcon.style.display = "none";
           audioClip = undefined;
         }
-
-        console.log(data);
 
         if (data[0].meanings) {
           data[0].meanings.forEach((meaning) => {
@@ -82,12 +88,25 @@ searchBar.addEventListener("keypress", (event) => {
             }
           });
         }
+
+        if (data[0].meanings[0].synonyms) {
+          console.log(data[0].meanings[0].synonyms);
+          data[0].meanings[0].synonyms.forEach((synonym) => {
+            const synonymItem = document.createElement("li");
+            synonymItem.innerText = synonym;
+            synonymList.appendChild(synonymItem);
+          });
+        }
       })
-      .catch((error) => {
-        word.innerText = "Word not found";
-        console.log(error);
+      .catch((err) => {
+        searchBar.style.outline = "2px solid red";
+        error.innerText = "Word not found";
         // Handle any errors that occurred during the request
       });
+  } else {
+    searchBar.style.outline = "none";
+    searchBar.style.outline = "2px solid red";
+    error.innerText = "Whoops can't be empty...";
   }
 });
 
