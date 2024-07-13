@@ -23,6 +23,7 @@ body {
   --black: #ffffff;
   --grey: #f1f1f1;
   --light-grey: #2d2d2d;
+  --dark-grey: #757575;
   --purple: #a445ed;
   background-color: var(--white);
   color: var(--black);
@@ -33,6 +34,7 @@ body {
   --black: #2d2d2d;
   --grey: #f1f1f1;
   --light-grey: #757575;
+  --dark-grey: #f4f4f4;
   --purple: #a445ed;
   background-color: var(--white);
   color: var(--black);
@@ -148,13 +150,20 @@ input:checked + .slider:before {
   width: 100%;
   padding: 1.25rem;
   border-radius: 0.75rem;
+  font-weight: bold;
+  font-size: 1.25rem;
   border: none;
-  background-color: var(--grey);
-  color: black;
+  background-color: var(--dark-grey);
+  color: var(--black);
 }
 
 .search-bar:focus {
   outline: 2px solid var(--purple);
+}
+
+::placeholder {
+  color: var(--light-grey);
+  opacity: 1; /* Firefox */
 }
 
 .audio-icon {
@@ -164,6 +173,7 @@ input:checked + .slider:before {
 .audio-icon:hover {
   transform: scale(1.1);
   transition: 0.3s;
+  fill: var(--purple);
 }
 
 .main-result {
