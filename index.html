@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html data-theme="light" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="modern-normalise.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="utils.css" />
+
+    <title>Frontend Mentor | Dictionary web app</title>
+  </head>
+  <body >
+    <nav class="container">
+      <div class="logo">
+        <img src="./assets/images/logo.svg" alt="Dictionary logo" />
+      </div>
+      <div class="menu-items">
+        <select name="font-type" id="font-type">
+          <option selected="selected" value="serif">serif</option>
+          <option value="sans-serif">sans-serif</option>
+          <option value="monospace">mono</option>
+        </select>
+        <label class="switch">
+          <input type="checkbox" id="theme" />
+          <span class="slider round"></span>
+        </label>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22"><path fill="none"  stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/></svg>
+      </div>
+    </nav>
+    <main class="container">
+      <div class="search">
+        <input
+        required
+        type="search"
+        name="word-search"
+        id="word-search"
+        class="search-bar"
+        placeholder="Search for a word.."
+      />
+      </div>
+      
+      <div class="main-result">
+        <div class="text-result">
+          <h1></h1>
+          <p class="pronunciation"></p>
+        </div>
+        <div class="audio-result">
+          <img
+            src="./assets/images/icon-play.svg"
+            alt="Audio icon"
+            class="audio-icon"
+          />
+        </div>
+      </div>
+      <div class="word-description">
+        <div class="noun-type">
+        <div class="type-of-word">
+          <h2>noun</h2>
+          <div class="line"></div>
+        </div>
+        <h3 class="meaning">Meaning</h3>
+        <ul class="meaning-ul noun"></ul>
+        <div class="synonyms">
+          <h3>Synonyms</h3>
+          <ul>
+            <li>Keyboard instrument</li>
+            
+          </ul>
+        </div>
+      </div>
+        <div class="verb-type">
+        <div class="type-of-word">
+          <h2>Verb</h2>
+          <div class="line"></div>
+        </div>
+        <h3 class="meaning">Meaning</h3>
+        <ul class="meaning-ul verb"></ul>
+      </div>
+      <div class="adjective-type">
+      <div class="type-of-word">
+        <h2>Adjective</h2>
+        <div class="line"></div>
+      </div>
+      <h3 class="meaning">Meaning</h3>
+      <ul class="meaning-ul adjective"></ul>
+    </div>
+      <div class="line"></div>
+      <div class="source">
+        <p>Source</p>
+        <a href="https://api.dictionaryapi.dev"
+          >https://api.dictionaryapi.dev</a
+        >
+      </div>
+    </main>
+    <script src="index.js" defer></script>
+  </body>
+</html>
