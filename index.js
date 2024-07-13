@@ -103,7 +103,7 @@ searchBar.addEventListener("keypress", (event) => {
         error.innerText = "Word not found";
         // Handle any errors that occurred during the request
       });
-  } else {
+  } else if (event.key === "Enter" && !searchBar.value) {
     searchBar.style.outline = "none";
     searchBar.style.outline = "2px solid red";
     error.innerText = "Whoops can't be empty...";
